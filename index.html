@@ -1,0 +1,138 @@
+<!DOCTYPE html> 
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Mi niña</title>
+<style>                      
+  body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #000000;
+    color: white;
+  }
+
+  .screen {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    text-align: center;
+  }
+
+  .password-screen {
+    flex-direction: column;
+  }
+
+  .keypad {
+    display: grid;
+    grid-template-columns: repeat(3, 60px);
+    gap: 10px;
+    margin-top: 20px;
+    justify-content: center;
+  }
+
+  .key {
+    background-color: black;
+    color: white;
+    font-size: 20px;
+    padding: 15px;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    box-shadow: 0px 5px 15px rgba(0, 200, 255, 0.6);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .key:hover {
+    transform: translateY(-2px);
+    box-shadow: 0px 8px 20px rgba(0, 200, 255, 0.8);
+  }
+
+  .input-display {
+    border: 3px solid #33a3ff;
+    box-shadow: 0px 5px 15px rgba(0, 200, 255, 0.6);
+    padding: 10px;
+    border-radius: 30px;
+    width: 160px;
+    font-size: 24px;
+    margin-top: 20px;
+    letter-spacing: 8px;
+    background-color: black;
+    color: white;
+  }
+
+  /* animación éxito */
+  .success {
+    animation: glow 0.6s ease;
+  }
+
+  @keyframes glow {
+    0% { box-shadow: 0 0 5px #0ff; }
+    50% { box-shadow: 0 0 20px #0ff; }
+    100% { box-shadow: 0 0 5px #0ff; }
+  }
+</style>
+</head>
+<body>
+
+<div class="screen password-screen">
+  <h2>🔒 Enter password</h2>
+  <div class="input-display" id="inputDisplay">••••••</div>
+  <div class="keypad">
+    <button class="key" onclick="enterDigit('1')">1</button>
+    <button class="key" onclick="enterDigit('2')">2</button>
+    <button class="key" onclick="enterDigit('3')">3</button>
+    <button class="key" onclick="enterDigit('4')">4</button>
+    <button class="key" onclick="enterDigit('5')">5</button>
+    <button class="key" onclick="enterDigit('6')">6</button>
+    <button class="key" onclick="enterDigit('7')">7</button>
+    <button class="key" onclick="enterDigit('8')">8</button>
+    <button class="key" onclick="enterDigit('9')">9</button>
+    <div></div>
+    <button class="key" onclick="enterDigit('0')">0</button>
+    <div></div>
+  </div>
+</div>
+
+<script>
+let input = "";
+
+// 🔑 múltiples contraseñas
+const passwords = {
+  "150406": "brome.html",
+  "101930": "libro1.html",
+  "261023": "animacion.html"
+};
+
+function enterDigit(digit) {
+  if (input.length < 6) {
+    input += digit;
+  }
+
+  const display = document.getElementById('inputDisplay');
+  display.textContent = input.padEnd(6, '•');
+
+  // debug (puedes borrar después)
+  console.log("Ingresado:", input);
+
+  if (input.length === 6) {
+    if (passwords.hasOwnProperty(input)) {
+      display.classList.add("success");
+
+      setTimeout(() => {
+        window.location.href = passwords[input];
+      }, 500);
+
+    } else {
+      alert('Contraseña incorrecta');
+      input = '';
+      display.textContent = '••••••';
+    }
+  }
+}
+</script>
+
+</body>
+</html>

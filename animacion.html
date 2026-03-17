@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Carta Animada</title>
+
+<style>
+body {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: radial-gradient(ellipse at bottom, #0d1b2a 0%, #000000 100%);
+  font-family: 'Comic Sans MS', cursive;
+}
+
+/* CONTENEDOR */
+.container {
+  position: relative;
+}
+
+/* LIBRO */
+.book-wrapper {
+  background: linear-gradient(145deg, #8b5a2b, #5a3b1a);
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+}
+
+.book {
+  display: flex;
+  gap: 10px;
+  background: #caa472;
+  padding: 15px;
+  border-radius: 10px;
+  animation: fadeOut 3s ease forwards 4s;
+}
+
+.spine {
+  width: 20px;
+  background: #5a3b1a;
+  border-radius: 5px;
+}
+
+/* PÁGINAS */
+.page {
+  width: 220px;
+  height: 260px;
+  background: #fff8f0;
+  border-radius: 8px;
+  padding: 15px;
+  box-shadow: inset 0 0 10px rgba(0,0,0,0.2);
+  font-size: 14px;
+  line-height: 1.6;
+  overflow-y: auto;
+  white-space: pre-line;
+}
+
+/* LETRAS OCULTAS */
+.highlight {
+  color: transparent;
+  position: relative;
+}
+
+.highlight::after {
+  content: attr(data-letter);
+  position: absolute;
+  color: red;
+  font-weight: bold;
+  left: 0;
+}
+
+/* ANIMACIÓN LIBRO */
+@keyframes fadeOut {
+  to {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+}
+
+/* TEXTO FINAL */
+.final-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  
+  font-size: 32px;
+  color: white;
+
+  max-width: 600px;
+  text-align: center;
+
+  white-space: normal; /* 🔥 permite bajar línea */
+  word-wrap: break-word;
+
+  overflow: hidden;
+  border-right: 3px solid white;
+
+  width: 0;
+  opacity: 0;
+
+  animation: showText 1s forwards 5s,
+             typing 5s steps(50, end) 5s forwards,
+             blink 0.7s infinite 5s;
+}
+
+@keyframes showText {
+  to { opacity: 1; }
+}
+
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+
+@keyframes blink {
+  50% { border-color: transparent }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+  <div class="book-wrapper">
+    <div class="book">
+
+      <div class="page">
+<span class="highlight" data-letter="E">E</span>s curioso cómo, a pesar del tiempo y de todo lo que ha pasado, hay cosas que simplemente <span class="highlight" data-letter="N">N</span>o se rompen del todo
+
+n<span class="highlight" data-letter="O">O</span> sé si te pasa, pero sieno<span class="highlight" data-letter="T">T</span> que hay una conexión entre nosotros que nunca terminó de i<span class="highlight" data-letter="R">R</span>se… como si en algún punto siempre encontrar<span class="highlight" data-letter="A">A</span> la forma de <span class="highlight" data-letter="V">V</span>olver
+
+y no hablo solo de recuerdos, s<span class="highlight" data-letter="I">I</span>no de algo más tranquilo, más real… esa sensación de que, cuan<span class="highlight" data-letter="D">D</span>o hablamos, todo se siente familiar, como si no hubier<span class="highlight" data-letter="A">A</span> pasado tanto tiempo
+
+tal vez <span class="highlight" data-letter="N">N</span>o todo está hech<span class="highlight" data-letter="O">O</span> para repetirse, pero hay conexione<span class="highlight" data-letter="S">S</span> que tampo<span class="highlight" data-letter="C">C</span>o están hechas para olvid<span class="highlight" data-letter="A">A</span>rse
+
+supongo que lo interesante es entender por qué <span class="highlight" data-letter="S">S</span>iguen ahí… y qué quieren decirnos ahora.
+      </div>
+
+      <div class="spine"></div>
+
+      <div class="page">
+<span class="highlight" data-letter="A">A</span> veces la vida es <span class="highlight" data-letter="R">R</span>ara… pone a las personas <span class="highlight" data-letter="E">E</span>n caminos distintos, aunque algo siga ahí
+quién sabe si es coincidencia o si hay cosas que no se han ter<span class="highlight" data-letter="M">M</span>inado de decir
+hay m<span class="highlight" data-letter="O">O</span>mentos que se quedan, aunque pa<span class="highlight" data-letter="S">S</span>e el tiempo
+no todo es <span class="highlight" data-letter="E">T</span>an simple, a veces lo important<span class="highlight" data-letter="E">E</span> va más allá de <span class="highlight" data-letter="L">L</span>as palabras
+quizá hay historias que sol<span class="highlight" data-letter="O">O</span> esperan su momento
+a veces uno entiende tarde lo que antes no vio
+a veces <span class="highlight" data-letter="P">P</span>ienso que cuando algo es <span class="highlight" data-letter="R">R</span>eal, encuentra la f<span class="highlight" data-letter="O">O</span>rma
+la vida da <span class="highlight" data-letter="M">M</span>uchas vueltas, pero ciertas conexiones no se romp<span class="highlight" data-letter="E">E</span>n
+quizá no es ahora, pero todo llega cuando <span class="highlight" data-letter="T">T</span>iene que llegar.
+hay cosas que se quedan… a veces lo más real n <span class="highlight" data-letter="O">O</span>necesita explicación.
+      </div>
+
+    </div>
+  </div>
+
+  <!-- TEXTO FINAL -->
+  <div class="final-text">
+EN OTRA VIDA NOS CASAREMOS TE LO PROMETO
+  </div>
+
+</div>
+
+</body>
+</html>
